@@ -1,1 +1,19 @@
 <h1>Questions</h1>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Title</th>
+    <th>Name</th>
+    <th>Content</th>
+    <th></th>
+  </tr>
+  <% @questions.each do |q| %>
+  <tr>
+    <td><%= q.id %></td>
+    <td><%= q.title %></td>
+    <td><%= q.name %></td>
+    <td><%= q.content %></td>
+    <td><%= link_to 'show', question_path(q) %></td>
+  </tr>
+  <% end %>
+</table>
