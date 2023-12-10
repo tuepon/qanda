@@ -7,6 +7,7 @@ class QuestionsController < ApplicationController
   end
 
   def new
+    @question = Question.new
   end
 
   def create
@@ -20,5 +21,5 @@ class QuestionsController < ApplicationController
 
   def destroy
   end
-  
+
 end
