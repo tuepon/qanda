@@ -7,13 +7,13 @@
     <th>Content</th>
     <th></th>
   </tr>
-  <% @questions.each do |q| %>
+  <% @questions.each do |question| %>
   <tr>
-    <td><%= q.id %></td>
-    <td><%= q.title %></td>
-    <td><%= q.name %></td>
-    <td><%= q.content %></td>
-    <td><%= link_to 'show', question_path(q) %></td>
+    <td><%= question.id %></td>
+    <td><%= question.title %></td>
+    <td><%= question.name %></td>
+    <td><%= question.content %></td>
+    <td><%= link_to 'show', question_path(question) %></td>
   </tr>
   <% end %>
 </table>
