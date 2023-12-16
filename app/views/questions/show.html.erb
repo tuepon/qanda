@@ -1,47 +1,58 @@
-<h1>Show</h1>
-<p>
-  Title:<br>
-  <%= @question.title %>
-</p>
-<p>
-  Name:<br>
-  <%= @question.name %>
-</p>
-<p>
-  Content:<br>
-  <%= @question.content %>
-</p>
+<div class="flex flex-col">
+  <h1>Show</h1>
+    <label>
+      Title:
+    </label>
+      <p>
+        <%= @question.title %>
+      </p>
+    <label>
+      Name:
+    </label>
+      <p>
+        <%= @question.name %>
+      </p>
+    <label>
+      Content:
+    </label>
+      <p>
+        <%= @question.content %>
+      </p>
+  <h2>Answers</h2>
+    <% @question.answers.each do |answer| %>
+      <label>
+        Name:
+      </label>
+        <p>
+          <%= answer.name %>
+        </p>
+      <label>
+        Content:
+      </label>
+        <p>
+          <%= answer.content %>
+        </p>
+      <div class="btn btn-red my-3">
+        <%= link_to 'Destroy Answer', [answer.question, answer],
+        data: { turbo_method: 'delete', turbo_confirm: 'Are you sure?' } %>
+      </div>
+    <% end %>
 
-<h2>Answers</h2>
-<% @question.answers.each do |answer| %>
-  <p>
-    Name:<br>
-    <%= answer.name %>
-  </p>
-  <p>
-    Content:<br>
-    <%= answer.content %>
-  </p>
-  <p>
-    <%= link_to 'Destroy Answer', [answer.question, answer],
-      data: { turbo_method: 'delete', turbo_confirm: 'Are you sure?' } %>
-  </p>
+  <h2>Add an answer</h2>
+    <%= form_with model: [@question, @question.answers.build] do |form| %>
+    <div>
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </div>
+    <div>
+      <%= form.label :content %>
+      <%= form.text_field :content %>
+    </div>
+    <div class="btn btn-blue my-5">
+      <%= form.submit %>
+    </div>
+  <% end %>
 
-<% end %>
+  <%= link_to 'back to Top', questions_path %>
+</div>
 
-<h2>Add an answer</h2>
-<%= form_with model: [@question, @question.answers.build] do |form| %>
-  <div>
-    <%= form.label :name %><br>
-    <%= form.text_field :name %>
-  </div>
-  <div>
-    <%= form.label :content %><br>
-    <%= form.text_field :content %>
-  </div>
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
-
-<%= link_to 'top', questions_path %>

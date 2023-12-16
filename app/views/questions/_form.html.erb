@@ -8,19 +8,25 @@
       </ul>
     </div>
   <% end %>
-  <div class= "py-3">
-    <%= form.label :title %><br>
-    <%= form.text_field :title %>
-  </div>
-  <div class= "py-3">
-    <%= form.label :name %><br>
-    <%= form.text_field :name %>
-  </div>
-  <div class= "py-3">
-    <%= form.label :content %><br>
-    <%= form.text_area :content %>
-  </div>
-  <div class="btn btn-blue item-center">
-    <%= form.submit 'Submit' %>
-  </div>
+  <label>
+    <%= form.label :title %>
+  </label>
+    <div>
+      <%= form.text_field :title %>
+    </div>
+  <label>
+    <%= form.label :name %>
+  </label>
+    <div>
+      <%= form.text_field :name %>
+    </div>
+  <label>
+    <%= form.label :content %>
+  </label>
+    <div>
+      <%= form.text_area :content %>
+    </div>
+    <div class="btn btn-blue ">
+      <%= form.submit 'Submit' %>
+    </div>
 <% end %>
