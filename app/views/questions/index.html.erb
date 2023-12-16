@@ -1,33 +1,33 @@
 <div class="flex flex-col">
-  <h1 class="text-2xl">Questions</h1>
+  <h1>Questions</h1>
     <div class="my-10">
-      <%= link_to 'create new question', new_question_path, { class: "ml-1 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 border border-green-700 rounded" } %>
+      <%= link_to 'create new question', new_question_path, { class: "btn btn-blue btn-blue:hover" } %>
     </div>
   <div class="overflow-x-auto w-full">
-    <table class="min-w-full bg-white border border-gray-300">
+    <table>
       <thead>
         <tr class="bg-gray-200">
-          <th class="py-2 px-4 border-b">ID</th>
-          <th class="py-2 px-4 border-b">Title</th>
-          <th class="py-2 px-4 border-b">Name</th>
-          <th class="py-2 px-4 border-b">Content</th>
-          <th class="py-2 px-4 border-b">Action</th>
+          <th class="table-cell">ID</th>
+          <th class="table-cell">Title</th>
+          <th class="table-cell">Name</th>
+          <th class="table-cell">Content</th>
+          <th class="table-cell">Action</th>
         </tr>
       </thead>
       <tbody>
         <% @questions.each do |question| %>
-        <tr>
-          <td class="py-2 px-4 border-b"><%= question.id %></td>
-          <td class="py-2 px-4 border-b"><%= question.title %></td>
-          <td class="py-2 px-4 border-b"><%= question.name %></td>
-          <td class="py-2 px-4 border-b"><%= question.content %></td>
-          <td class="py-2 px-4 border-b">
-            <%= link_to 'show', question_path(question) %>
-            <%= link_to 'edit', edit_question_path(question) %>
-            <%= link_to 'destroy', question_path(question),
-                  data: { turbo_method: 'delete', turbo_confirm: 'Are you sure?'} %>
-          </td>
-        </tr>
+          <tr>
+            <td class="table-cell"><%= question.id %></td>
+            <td class="table-cell"><%= question.title %></td>
+            <td class="table-cell"><%= question.name %></td>
+            <td class="table-cell"><%= question.content %></td>
+            <td class="table-cell">
+              <%= link_to 'show', question_path(question) %>
+              <%= link_to 'edit', edit_question_path(question) %>
+              <%= link_to 'destroy', question_path(question),
+                    data: { turbo_method: 'delete', turbo_confirm: 'Are you sure?'} %>
+            </td>
+          </tr>
         <% end %>
       </tbody>
     </table>
