@@ -1,25 +1,36 @@
+<div class="flex flex-col">
   <h1 class="text-2xl">Questions</h1>
-  <%= link_to 'new', new_question_path %>
-<div>
-  <table class="py-10">
-    <tr>
-      <th>ID</th>
-      <th>Title</th>
-      <th>Name</th>
-      <th>Content</th>
-      <th></th>
-    </tr>
-    <% @questions.each do |question| %>
-    <tr>
-      <td><%= question.id %></td>
-      <td><%= question.title %></td>
-      <td><%= question.name %></td>
-      <td><%= question.content %></td>
-      <td><%= link_to 'show', question_path(question) %></td>
-      <td><%= link_to 'edit', edit_question_path(question) %></td>
-      <td><%= link_to 'destroy', question_path(question),
-            data: { turbo_method: 'delete', turbo_confirm: 'Are you sure?'} %></td>
-    </tr>
-    <% end %>
-  </table>
+    <div class="my-10">
+      <%= link_to 'create new question', new_question_path, { class: "ml-1 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 border border-green-700 rounded" } %>
+    </div>
+  <div class="overflow-x-auto w-full">
+    <table class="min-w-full bg-white border border-gray-300">
+      <thead>
+        <tr class="bg-gray-200">
+          <th class="py-2 px-4 border-b">ID</th>
+          <th class="py-2 px-4 border-b">Title</th>
+          <th class="py-2 px-4 border-b">Name</th>
+          <th class="py-2 px-4 border-b">Content</th>
+          <th class="py-2 px-4 border-b">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @questions.each do |question| %>
+        <tr>
+          <td class="py-2 px-4 border-b"><%= question.id %></td>
+          <td class="py-2 px-4 border-b"><%= question.title %></td>
+          <td class="py-2 px-4 border-b"><%= question.name %></td>
+          <td class="py-2 px-4 border-b"><%= question.content %></td>
+          <td class="py-2 px-4 border-b">
+            <%= link_to 'show', question_path(question) %>
+            <%= link_to 'edit', edit_question_path(question) %>
+            <%= link_to 'destroy', question_path(question),
+                  data: { turbo_method: 'delete', turbo_confirm: 'Are you sure?'} %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  
 </div>
